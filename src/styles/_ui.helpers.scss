@@ -1,0 +1,13 @@
+.text-center {
+    text-align: center;
+}
+
+.dark-on-light {
+    background-color: $white;
+    color: $purple;
+}
+
+.light-on-dark {
+    background-color: $purple;
+    color: $white;
+}

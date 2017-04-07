@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/_elements.fonts';
+@import './styles/_elements.colors';
+@import './styles/_ui.helpers';
+
+
+// Components
+@import './app/app.component';
+@import './app/components/splash-screen/splash-screen.component';
