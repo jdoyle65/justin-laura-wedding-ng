@@ -1,6 +1,7 @@
 .splash-screen {
 
   height: 100%;
+  @include darkOnLight;
 
   &__splash-img {
 
@@ -15,5 +16,11 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
+    padding-bottom: 1em;
+  }
+
+  &__arrow-icon {
+    font-size: 65px;
+    color: $purple;
   }
 }

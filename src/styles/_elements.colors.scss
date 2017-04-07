@@ -1,3 +1,16 @@
 $white: white;
-
+$purple-light: #a668eb;
 $purple: #5f4389;
+$purple-dark: #5f4389;
+$yellow: #ffee36;
+
+
+@mixin lightOnDark {
+    background-color: $purple;
+    color: $white;
+}
+
+@mixin darkOnLight {
+    background-color: $white;
+    color: $purple;
+}

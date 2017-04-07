@@ -1,8 +1,10 @@
 @import './styles/_elements.fonts';
 @import './styles/_elements.colors';
 @import './styles/_ui.helpers';
+@import './styles/_ui.animations';
 
 
 // Components
 @import './app/app.component';
 @import './app/components/splash-screen/splash-screen.component';
+@import './app/components/wedding-details/wedding-details.component';
