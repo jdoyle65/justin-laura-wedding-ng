@@ -8,3 +8,17 @@
 @import './app/app.component';
 @import './app/components/splash-screen/splash-screen.component';
 @import './app/components/wedding-details/wedding-details.component';
+
+.app-container { 
+   animation-duration: 1s;
+   animation-name: fade;
+}
+
+@keyframes fade{
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
