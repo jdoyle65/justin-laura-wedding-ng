@@ -1,0 +1,10 @@
+<div class="menu-button">
+  <button class="menu-button__button" (click)="openMenu()">
+    <i class="menu-button__icon fa fa-bars"></i>
+  </button>
+</div>
+<div class="menu" [ngClass]="{'menu--open': open}">
+  <button class="menu-button__button" (click)="closeMenu()">
+    <i class="menu-button__icon fa fa-times"></i>
+  </button>
+</div>

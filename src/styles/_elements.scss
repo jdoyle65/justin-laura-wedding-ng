@@ -1,0 +1,8 @@
+button {
+    background: none;
+    border: none;
+
+    &:active, &:focus {
+        border: none;
+    }
+}

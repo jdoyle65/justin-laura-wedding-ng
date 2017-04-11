@@ -1,0 +1,34 @@
+.menu-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+
+    &__button {
+        border-radius: 5px;
+        @include darkOnLight;
+
+        &:hover {
+            @include lightOnDark;
+        }        
+    }
+
+    &__icon {
+        padding: .2em;
+        font-size: 3em;
+    }
+}
+
+.menu {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: white;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.2s;
+
+    &--open {
+        transform: translateX(0);
+    }
+}

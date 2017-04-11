@@ -1,3 +1,4 @@
+@import './styles/_elements';
 @import './styles/_elements.fonts';
 @import './styles/_elements.colors';
 @import './styles/_ui.helpers';
@@ -8,17 +9,4 @@
 @import './app/app.component';
 @import './app/components/splash-screen/splash-screen.component';
 @import './app/components/wedding-details/wedding-details.component';
-
-.app-container { 
-   animation-duration: 1s;
-   animation-name: fade;
-}
-
-@keyframes fade{
-   from {
-      opacity: 0;
-   }
-   to {
-      opacity: 1;
-   }
-}
+@import './app/components/menu/menu.component';

@@ -10,12 +10,15 @@ import { SplashScreenComponent } from './components/splash-screen/splash-screen.
 import { WeddingDetailsComponent } from './components/wedding-details/wedding-details.component';
 
 import { DelayGuard } from './guards/delay.guard';
+import { MenuService } from './services/menu.service';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashScreenComponent,
-    WeddingDetailsComponent
+    WeddingDetailsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,10 @@ import { DelayGuard } from './guards/delay.guard';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [DelayGuard],
+  providers: [
+    DelayGuard,
+    MenuService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
