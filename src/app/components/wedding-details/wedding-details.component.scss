@@ -1,0 +1,44 @@
+.wedding-details {
+    min-height: 100vh;
+    overflow: auto;
+    @include lightOnDark;
+
+    &__content {
+        padding: 0 1.5em;
+        position:relative;
+        z-index:2;
+    }
+
+    &__table {
+        @media(max-width: 768px) {
+            margin-left: 18px;
+            margin-right: 18px;
+        }
+
+        margin-bottom: 20px;
+
+        &-tr {
+            vertical-align: top;
+        }
+
+        &-header {
+            text-align: right;
+            color: $yellow;
+            padding-bottom: 10px;
+        }
+
+        &-td {
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__after-image-filler {
+        height: 100%;
+        color: $purple-dark;
+    }
+}
