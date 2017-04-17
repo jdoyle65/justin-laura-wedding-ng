@@ -3,6 +3,10 @@
   height: 100%;
   @include darkOnLight;
 
+  &__splash-img-wrapper {
+    height: 85%;
+  }
+
   &__splash-img {
 
     max-height: 100%;

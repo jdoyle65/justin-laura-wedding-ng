@@ -12,13 +12,15 @@ import { WeddingDetailsComponent } from './components/wedding-details/wedding-de
 import { DelayGuard } from './guards/delay.guard';
 import { MenuService } from './services/menu.service';
 import { MenuComponent } from './components/menu/menu.component';
+import { RsvpComponent } from './components/rsvp/rsvp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashScreenComponent,
     WeddingDetailsComponent,
-    MenuComponent
+    MenuComponent,
+    RsvpComponent
   ],
   imports: [
     BrowserModule,

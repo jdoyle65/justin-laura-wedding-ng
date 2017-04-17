@@ -12,12 +12,10 @@ export class MenuService {
   constructor() {
     this.menuStateSubject = new Subject();
     this.menuStateSubject.next(false);
-    
     this.menuState = this.menuStateSubject.asObservable();
   }
 
   public setMenuState(isOpen: boolean): void {
     this.menuStateSubject.next(isOpen);
   }
-
 }

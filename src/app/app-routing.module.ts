@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DelayGuard } from './guards/delay.guard';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { WeddingDetailsComponent } from './components/wedding-details/wedding-details.component';
+import { RsvpComponent } from './components/rsvp/rsvp.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'wedding-details',
         component: WeddingDetailsComponent
+      },
+      {
+        path: 'rsvp',
+        component: RsvpComponent
       },
       {
         path: '**',

@@ -7,9 +7,21 @@
     animation-timing-function: ease;
 }
 
+.animate-slide-in {
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;   
+}
+
 @keyframes bob {
     0% {top: 0}
     10% {top: 10px}
     20% {top: 0}
     100% {top: 0}
+}
+
+@keyframes slide-in {
+    0% {opacity: 0; transform: translateX(1em)}
+    100% {opacity: 1; transform: translateX(0)}
 }

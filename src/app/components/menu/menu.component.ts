@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { MenuService } from '../../services/menu.service';
 
@@ -8,12 +9,20 @@ import { MenuService } from '../../services/menu.service';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
+  public visible: boolean;
   public open: boolean;
+  public routes = [
+    { label: 'Home', link: '/home' },
+    { label: 'Details', link: '/wedding-details' },
+    { label: 'RSVP', link: '/rsvp' }
+  ];
 
   private menuStateSub;
+  private menuVisibleSub;
 
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -35,5 +44,4 @@ export class MenuComponent implements OnInit, OnDestroy {
   public closeMenu() {
     this.menuService.setMenuState(false);
   }
-
 }

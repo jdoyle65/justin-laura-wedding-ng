@@ -1,10 +1,21 @@
-<div class="menu-button">
-  <button class="menu-button__button" (click)="openMenu()">
-    <i class="menu-button__icon fa fa-bars"></i>
-  </button>
+<div *ngIf="visible" class="menu-button">
+  <div class="menu-button__wrapper">
+    <button class="menu-button__button" (click)="openMenu()">
+      <i class="menu-button__icon fa fa-bars"></i>
+    </button>
+  </div>
 </div>
-<div class="menu" [ngClass]="{'menu--open': open}">
-  <button class="menu-button__button" (click)="closeMenu()">
-    <i class="menu-button__icon fa fa-times"></i>
-  </button>
+<div *ngIf="visible" class="menu" [ngClass]="{'menu--open': open}">
+  <div class="menu-button__wrapper">
+    <button class="menu-button__button menu-button__button--invert" (click)="closeMenu()">
+      <i class="menu-button__icon fa fa-times"></i>
+    </button>
+  </div>
+  <div>
+    <ul class="menu__route-list">
+      <li *ngFor="let route of routes" class="menu__route" [routerLink]="route.link" routerLinkActive="active">
+        <a>{{ route.label }}</a>
+      </li>
+    </ul>
+  </div>
 </div>
