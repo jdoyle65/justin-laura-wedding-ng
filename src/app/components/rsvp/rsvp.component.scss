@@ -1,4 +1,10 @@
 .rsvp {
-    height: 100%;
+    position: absolute;
+    z-index: 1;
+    min-height: 100%;
+    width: 100%;
     @include lightOnDark;
+    padding: 1em;
 }
+
+@import './guest/guest.component';

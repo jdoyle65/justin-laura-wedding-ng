@@ -13,7 +13,7 @@
   </div>
   <div>
     <ul class="menu__route-list">
-      <li *ngFor="let route of routes" class="menu__route" [routerLink]="route.link" routerLinkActive="active">
+      <li *ngFor="let route of routes" class="menu__route" [routerLink]="route.link" routerLinkActive="active" (click)="onClickRoute()">
         <a>{{ route.label }}</a>
       </li>
     </ul>

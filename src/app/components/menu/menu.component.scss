@@ -1,4 +1,5 @@
 .menu-button {
+    z-index: 1000;
     position: absolute;
     top: 0;
     right: 0;
@@ -39,7 +40,7 @@
     right: 0;
     transform: translateX(100%);
     transition: transform 0.2s;
-    z-index: 1000;
+    z-index: 1001;
 
     &--open {
         transform: translateX(0);

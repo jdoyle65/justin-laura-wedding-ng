@@ -1,0 +1,16 @@
+<div class="guest">
+
+  <div *ngIf="!editing">
+    <span>{{ guest.name }}</span>
+    <button class="button button--small" (click)="onClickEdit()">
+      Edit
+    </button>
+  </div>
+
+  <div *ngIf="editing">
+    <input type="text" [(ngModel)]="guestNameEdit">
+    <button class="button button--small" (click)="onClickSave()">
+      Save
+    </button>
+  </div>
+</div>

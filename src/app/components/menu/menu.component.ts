@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 import { MenuService } from '../../services/menu.service';
 
@@ -9,7 +9,7 @@ import { MenuService } from '../../services/menu.service';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  public visible: boolean;
+  public visible: boolean = true;
   public open: boolean;
   public routes = [
     { label: 'Home', link: '/home' },
@@ -18,19 +18,28 @@ export class MenuComponent implements OnInit, OnDestroy {
   ];
 
   private menuStateSub;
-  private menuVisibleSub;
+  private routerSub;
 
   constructor(
     private menuService: MenuService,
-    private activatedRoute: ActivatedRoute
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.menuStateSub = this.menuService.menuState.subscribe(open => this.open = open);
+    this.routerSub = this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.visible = (event.url !== '/' && event.url !== '/home');
+      }
+      if (event instanceof NavigationEnd) {
+        this.visible = event.urlAfterRedirects !== '/home';
+      }
+    });
   }
 
   ngOnDestroy() {
     this.menuStateSub.unsubscribe();
+    this.routerSub.unsubscribe();
   }
 
   public toggleMenu() {
@@ -43,5 +52,9 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   public closeMenu() {
     this.menuService.setMenuState(false);
+  }
+
+  public onClickRoute() {
+    this.closeMenu();
   }
 }

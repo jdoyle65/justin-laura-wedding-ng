@@ -6,3 +6,31 @@ button {
         border: none;
     }
 }
+
+.button {
+    cursor: pointer;
+    padding: 0.8em;
+    border-radius: 4px;
+    font-size: 16px;
+    @include darkOnLight;
+
+    &:hover {
+        @include lightOnDark;
+    }
+
+    &--small {
+        font-size: 12px;
+        padding: 0.5em;
+    }
+}
+
+input[type="text"] {
+    padding: 0.8em;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+
+    &:focus {
+        outline: solid 2px $purple-light;
+    }
+}

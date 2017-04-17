@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: '',
+        path: 'home',
         component: SplashScreenComponent
       },
       {
@@ -25,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/'
+        redirectTo: '/home'
       }
     ],
     canActivate: [DelayGuard],

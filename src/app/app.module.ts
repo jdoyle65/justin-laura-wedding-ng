@@ -11,8 +11,10 @@ import { WeddingDetailsComponent } from './components/wedding-details/wedding-de
 
 import { DelayGuard } from './guards/delay.guard';
 import { MenuService } from './services/menu.service';
+import { RsvpService } from './services/rsvp.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
+import { GuestComponent } from './components/rsvp/guest/guest.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { RsvpComponent } from './components/rsvp/rsvp.component';
     SplashScreenComponent,
     WeddingDetailsComponent,
     MenuComponent,
-    RsvpComponent
+    RsvpComponent,
+    GuestComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { RsvpComponent } from './components/rsvp/rsvp.component';
   ],
   providers: [
     DelayGuard,
-    MenuService
+    MenuService,
+    RsvpService
   ],
   bootstrap: [AppComponent]
 })
