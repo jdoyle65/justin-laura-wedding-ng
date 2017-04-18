@@ -59,7 +59,12 @@ export class RsvpComponent implements OnInit, OnDestroy {
   }
 
   private onUserSetup(user): void {
+    if ('undefined' === typeof user) {
+      return;
+    }
+
     this.user = user;
+    this.mealEdit = user.selectedMeal;
     this.mealOptions = user.mealOptions;
   }
 

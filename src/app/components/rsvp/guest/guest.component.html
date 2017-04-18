@@ -2,9 +2,9 @@
 
   <div *ngIf="!editing">
     <div class="guest__info">
-      <span class="guest__name">{{ guest.name }}</span>
+      <span class="guest__name">{{ guest?.name }}</span>
       <br>
-      <span class="guest__meal">{{ guest.selectedMeal !== null ? mealOptions[guest.selectedMeal].name : 'No meal selected' }}</span>
+      <span class="guest__meal">{{ guest?.selectedMeal !== null ? mealOptions[guest?.selectedMeal].name : 'No meal selected' }}</span>
     </div>
     <div class="guest__buttons">
       <button class="guest__edit-btn button button--small" (click)="onClickEdit()">

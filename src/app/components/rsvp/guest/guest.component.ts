@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { RsvpService } from '../../../services/rsvp.service';
+
 @Component({
   selector: 'jl-guest',
   templateUrl: './guest.component.html'
@@ -13,7 +15,9 @@ export class GuestComponent implements OnInit {
   private guestMealEdit: number|null;
   private mealOptions;
 
-  constructor() { }
+  constructor(
+    private rsvpService: RsvpService
+  ) { }
 
   ngOnInit() {
     this.guestNameEdit = this.guest.name;
@@ -30,6 +34,7 @@ export class GuestComponent implements OnInit {
     this.editing = false;
     this.guest.name = this.guestNameEdit;
     this.guest.selectedMeal = this.guestMealEdit;
+    this.rsvpService.setUser(this.user);
   }
 
   onClickDelete() {
@@ -40,6 +45,8 @@ export class GuestComponent implements OnInit {
       this.user.guests = guests.slice(0, index)
         .concat(guests.slice(index + 1, guests.length));
     }
+
+    this.rsvpService.setUser(this.user);
   }
 
 }
