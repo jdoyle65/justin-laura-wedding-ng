@@ -42,7 +42,6 @@ app.get('/api/user/:token', function (req, res) {
 
 app.post('/api/user/:token', function (req, res) {
     const token = req.params.token;
-    console.log(req.body);
 
     if (USERS[token]) {
         USERS[token] = req.body.user;
@@ -51,6 +50,9 @@ app.post('/api/user/:token', function (req, res) {
         res.json({error: 1, message: `Invalid Token: ${token}`})
     }
 });
+
+app.use(express.static('public'));
+app.use('**', express.static('public'));
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')

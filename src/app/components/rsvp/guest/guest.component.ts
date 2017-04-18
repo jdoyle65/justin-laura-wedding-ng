@@ -10,7 +10,8 @@ export class GuestComponent implements OnInit {
 
   @Input() user;
   @Input() guest;
-  private editing = false;
+  public editing = false;
+
   private guestNameEdit: string;
   private guestMealEdit: number|null;
   private mealOptions;

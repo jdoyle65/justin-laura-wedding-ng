@@ -12,8 +12,8 @@ import { RsvpService } from '../../services/rsvp.service';
 export class RsvpComponent implements OnInit, OnDestroy {
 
   public mealEdit;
+  public loggedIn = false;
 
-  private loggedIn = false;
   private token: string;
   private user;
   private userSub;
