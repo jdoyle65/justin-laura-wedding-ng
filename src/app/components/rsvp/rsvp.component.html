@@ -9,11 +9,18 @@
     </div>
 
     <div *ngIf="loggedIn">
-        <h3>Welcome, {{ user.name }}</h3>
+        <h3 class="ml-10 mb-10">Welcome, {{ user.name }}</h3>
+        <button class="button button--small ml-10" (click)="onClickLogout()">Logout</button>
+        <br><br>
+        <label *ngFor="let meal of mealOptions">
+            <input type="radio" name="myMeal" [(ngModel)]="mealEdit" (ngModelChange)="onChangeMeal()" [value]="meal.id">
+            {{ meal.name }}
+            <br>
+        </label>
         <div *ngFor="let guest of user.guests">
             <jl-guest [user]="user" [guest]="guest"></jl-guest>
         </div>
-        <button *ngIf="user.guests.length < user.maxGuests" class="button" (click)="addGuest()">
+        <button *ngIf="user.guests.length < user.maxGuests" class="button ml-10" (click)="addGuest()">
             Add Guest +
         </button>
     </div>

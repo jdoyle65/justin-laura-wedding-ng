@@ -10,11 +10,15 @@ export class GuestComponent implements OnInit {
   @Input() guest;
   private editing = false;
   private guestNameEdit: string;
+  private guestMealEdit: number|null;
+  private mealOptions;
 
   constructor() { }
 
   ngOnInit() {
     this.guestNameEdit = this.guest.name;
+    this.guestMealEdit = this.guest.selectedMeal;
+    this.mealOptions = this.user.mealOptions;
   }
 
   onClickEdit() {
@@ -25,6 +29,17 @@ export class GuestComponent implements OnInit {
   onClickSave() {
     this.editing = false;
     this.guest.name = this.guestNameEdit;
+    this.guest.selectedMeal = this.guestMealEdit;
+  }
+
+  onClickDelete() {
+    const index = this.user.guests.findIndex(g => g.id === this.guest.id);
+
+    if (index >= 0) {
+      const guests = this.user.guests;
+      this.user.guests = guests.slice(0, index)
+        .concat(guests.slice(index + 1, guests.length));
+    }
   }
 
 }

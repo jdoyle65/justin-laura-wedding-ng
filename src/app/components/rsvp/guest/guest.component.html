@@ -1,16 +1,35 @@
 <div class="guest">
 
   <div *ngIf="!editing">
-    <span>{{ guest.name }}</span>
-    <button class="button button--small" (click)="onClickEdit()">
-      Edit
-    </button>
+    <div class="guest__info">
+      <span class="guest__name">{{ guest.name }}</span>
+      <br>
+      <span class="guest__meal">{{ guest.selectedMeal !== null ? mealOptions[guest.selectedMeal].name : 'No meal selected' }}</span>
+    </div>
+    <div class="guest__buttons">
+      <button class="guest__edit-btn button button--small" (click)="onClickEdit()">
+        Edit
+      </button>
+      <button class="guest__delete-btn button button--small" (click)="onClickDelete()">
+        X
+      </button>
+    </div>
   </div>
 
   <div *ngIf="editing">
-    <input type="text" [(ngModel)]="guestNameEdit">
-    <button class="button button--small" (click)="onClickSave()">
-      Save
-    </button>
+    <div class="guest__info">
+      <input type="text" [(ngModel)]="guestNameEdit">
+      <br>
+      <label *ngFor="let meal of mealOptions">
+        <input type="radio" name="guest-meal-{{guest.id}}" [(ngModel)]="guestMealEdit" [value]="meal.id">
+        {{ meal.name }}
+        <br>
+      </label>
+    </div>
+    <div class="guest__buttons">
+      <button class="button button--small" (click)="onClickSave()">
+        Save
+      </button>
+    </div>
   </div>
 </div>

@@ -11,11 +11,14 @@ import { RsvpService } from '../../services/rsvp.service';
 })
 export class RsvpComponent implements OnInit, OnDestroy {
 
+  public mealEdit;
+
   private loggedIn = false;
   private token: string;
   private user;
   private userSub;
   private tokenSub;
+  private mealOptions = [];
 
   constructor(
     private rsvpService: RsvpService
@@ -26,6 +29,8 @@ export class RsvpComponent implements OnInit, OnDestroy {
       this.token = token;
       if ('undefined' !== typeof token && token.length > 0) {
         this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
       }
     });
     this.userSub = this.rsvpService.user.subscribe(user => this.onUserSetup(user));
@@ -40,8 +45,22 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.rsvpService.setToken(this.token);
   }
 
+  onClickLogout() {
+    this.rsvpService.clearToken();
+  }
+
+  onChangeMeal() {
+    this.user.selectedMeal = this.mealEdit;
+    this.saveUser(this.user);
+  }
+
+  private saveUser(user): void {
+    this.rsvpService.setUser(user);
+  }
+
   private onUserSetup(user): void {
     this.user = user;
+    this.mealOptions = user.mealOptions;
   }
 
   private addGuest(): void {
@@ -50,7 +69,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
     if (newUser.guests.length < newUser.maxGuests) {
       newUser.guests.push({
         name: 'New Guest',
-        selectedMeal: 0,
+        selectedMeal: null,
         dietaryRestrictions: ''
       });
     }

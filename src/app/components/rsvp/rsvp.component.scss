@@ -4,7 +4,6 @@
     min-height: 100%;
     width: 100%;
     @include lightOnDark;
-    padding: 1em;
 }
 
 @import './guest/guest.component';

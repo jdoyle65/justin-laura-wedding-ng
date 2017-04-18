@@ -1,0 +1,24 @@
+.guest {
+    max-width: 400px;
+    padding: 0.5em;
+    white-space: nowrap;
+
+    &__info {
+        width: 75%;
+        display: inline-block;
+        white-space: normal;
+        word-break: break-all;
+
+        &--edit {
+
+        }
+    }
+
+    &__buttons {
+        width: 25%;
+        text-align: right;
+        display: inline-block;
+    }
+
+    &__edit-btn {}
+}
