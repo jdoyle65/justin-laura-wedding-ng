@@ -1,3 +1,5 @@
+$button-transition-speed: 200ms;
+
 button {
     background: none;
     border: none;
@@ -12,15 +14,39 @@ button {
     padding: 0.8em;
     border-radius: 4px;
     font-size: 16px;
-    @include darkOnLight;
+    background-color: $white;
+    color: black;
+    transition: box-shadow $button-transition-speed,
+        background-color $button-transition-speed,
+        color $button-transition-speed;
+    box-shadow: none;
 
     &:hover {
         @include lightOnDark;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
     }
 
     &--small {
         font-size: 12px;
         padding: 0.5em;
+    }
+
+    &.success {
+        background-color: $success;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            color: $success;
+        }
+    }
+
+    &.error {
+        background-color: $error;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            color: $error;
+        }
     }
 }
 
@@ -32,5 +58,44 @@ input[type="text"] {
 
     &:focus {
         outline: solid 2px $purple-light;
+    }
+}
+
+select {
+    padding: 0.75em;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: $white;
+}
+
+label {
+    select {
+        margin-left: 0.75em;
+    }
+}
+
+.form-group {
+    width: 100%;
+    margin: 0.5em 0;
+
+    .form-label {
+        float: left;
+        display: inline-block;
+        box-sizing: border-box;
+        width: 25%;
+    }
+
+    .form-input {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 75%;
+
+        input,
+        textarea,
+        select {
+            box-sizing: border-box;
+            width: 100%;
+        }
     }
 }

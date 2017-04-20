@@ -1,11 +1,13 @@
 .guest {
-    max-width: 400px;
-    padding: 0.5em;
+    background-color: $purple-dark;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    padding: 1.5em;
+    margin: 1em;
     white-space: nowrap;
 
     &__info {
-        width: 75%;
-        display: inline-block;
+        width: 100%;
         white-space: normal;
         word-break: break-all;
 
@@ -15,9 +17,8 @@
     }
 
     &__buttons {
-        width: 25%;
+        width: 100%;
         text-align: right;
-        display: inline-block;
     }
 
     &__edit-btn {}

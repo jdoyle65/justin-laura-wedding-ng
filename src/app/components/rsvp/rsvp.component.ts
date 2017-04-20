@@ -73,7 +73,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
     if (newUser.guests.length < newUser.maxGuests) {
       newUser.guests.push({
-        name: 'New Guest',
+        name: '',
         selectedMeal: null,
         dietaryRestrictions: ''
       });

@@ -2,7 +2,7 @@
 
   <div *ngIf="!editing">
     <div class="guest__info">
-      <span class="guest__name">{{ guest?.name }}</span>
+      <span class="guest__name">{{ guest?.name ? guest.name : 'New Guest' }}</span>
       <br>
       <span class="guest__meal">{{ guest?.selectedMeal !== null ? mealOptions[guest?.selectedMeal].name : 'No meal selected' }}</span>
     </div>
@@ -10,7 +10,7 @@
       <button class="guest__edit-btn button button--small" (click)="onClickEdit()">
         Edit
       </button>
-      <button class="guest__delete-btn button button--small" (click)="onClickDelete()">
+      <button class="guest__delete-btn button error button--small" (click)="onClickDelete()">
         X
       </button>
     </div>
@@ -18,16 +18,23 @@
 
   <div *ngIf="editing">
     <div class="guest__info">
-      <input type="text" [(ngModel)]="guestNameEdit">
-      <br>
-      <label *ngFor="let meal of mealOptions">
-        <input type="radio" name="guest-meal-{{guest.id}}" [(ngModel)]="guestMealEdit" [value]="meal.id">
-        {{ meal.name }}
-        <br>
-      </label>
+      <div class="form-group">
+        <div class="form-label">Name:</div>
+        <div class="form-input">
+          <input type="text" placeholder="New Guest" [(ngModel)]="guestNameEdit">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-label">Meal:</div>
+        <div class="form-input">
+          <select [(ngModel)]="guestMealEdit">
+            <option *ngFor="let meal of mealOptions" [value]="meal.id">{{ meal.name }}</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="guest__buttons">
-      <button class="button button--small" (click)="onClickSave()">
+      <button class="button success button--small" (click)="onClickSave()">
         Save
       </button>
     </div>

@@ -4,6 +4,25 @@
     min-height: 100%;
     width: 100%;
     @include lightOnDark;
+
+    &__wrapper {
+        width: 100%;
+        max-width: 500px;
+        margin-left: 1em;
+
+        @media(max-width: 500px) {
+            margin-left: 0;
+        }
+    }
+
+    &__add-guest-button {
+        margin-left: 1em;
+    }
+
+    &__my-info {
+        width: 100%;
+        margin-left: 1em;
+    }
 }
 
 @import './guest/guest.component';

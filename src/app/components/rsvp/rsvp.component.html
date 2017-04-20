@@ -3,26 +3,41 @@
     <div *ngIf="!loggedIn">
         <p>
             Please enter the token included with your wedding invite.
+            If you do not have a token, please text/call/email Justin or Laura.
+        </p>
+        <p>
+            Justin - (226) 236-0847 <span class="text-lt-purple">|</span> justin@justindoyle.ca
+            <br>
+            Laura - (902) 799-9726 <span class="text-lt-purple">|</span> fleurguson@gmail.com
         </p>
         <input type="text" [(ngModel)]="token">
         <button class="button" (click)="onClickLogin()">Enter</button>
     </div>
 
-    <div *ngIf="loggedIn">
-        <h3 class="ml-10 mb-10">Welcome, {{ user.name }}</h3>
-        <button class="button button--small ml-10" (click)="onClickLogout()">Logout</button>
-        <br><br>
-        <label *ngFor="let meal of mealOptions">
-            <input type="radio" name="myMeal" [(ngModel)]="mealEdit" (ngModelChange)="onChangeMeal()" [value]="meal.id">
-            {{ meal.name }}
-            <br>
-        </label>
+    <div class="rsvp__wrapper" *ngIf="loggedIn">
+        <button class="button button--small mt-10" (click)="onClickLogout()">Logout</button>
+        <h3 class="mb-10">Welcome, {{ user.name }}</h3>
+        <div class="rsvp__my-info">
+            <div class="form-group" >
+                <div class="form-label">My Meal:</div>
+                <div class="form-input">
+                    <select [(ngModel)]="mealEdit" (ngModelChange)="onChangeMeal()">
+                        <option *ngFor="let meal of mealOptions" [value]="meal.id">{{ meal.name }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div *ngFor="let guest of user.guests">
             <jl-guest [user]="user" [guest]="guest"></jl-guest>
         </div>
-        <button *ngIf="user.guests.length < user.maxGuests" class="button ml-10" (click)="addGuest()">
-            Add Guest +
-        </button>
+        <div style="text-align:right">
+            <button *ngIf="user.guests.length < user.maxGuests" class="button rsvp__add-guest-button" (click)="addGuest()">
+                Add Guest +
+            </button>
+            <button class="button success">
+                Submit RSVP
+            </button>
+        </div>
     </div>
 
 </div>
