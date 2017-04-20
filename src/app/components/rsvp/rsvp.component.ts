@@ -13,6 +13,8 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
   public mealEdit;
   public loggedIn = false;
+  public saveStatus = 'done';
+  public saveError = 'Error saving data.';
 
   private token: string;
   private user;
@@ -25,6 +27,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.rsvpService.saveStatus.subscribe(status => this.saveStatus = status);
     this.tokenSub = this.rsvpService.token.subscribe(token => {
       this.token = token;
       if ('undefined' !== typeof token && token.length > 0) {

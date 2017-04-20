@@ -7,9 +7,7 @@ const USERS = {
     "justin": {
         name: 'Justin Doyle',
         maxGuests: 2,
-        guests: [
-            {id: 0, name: 'Guest 1', selectedMeal: null, dietaryRestrictions: ''}
-        ],
+        guests: [],
         selectedMeal: null,
         dietaryRestrictions: '',
         mealOptions: [

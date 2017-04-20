@@ -9,12 +9,26 @@ export class RsvpService {
 
   public user: BehaviorSubject<any>;
   public token: BehaviorSubject<string>;
+  public saveStatus: BehaviorSubject<string>;
 
   constructor(
     private http: Http
   ) {
     this.user = new BehaviorSubject(undefined);
     this.token = new BehaviorSubject(this.checkForSavedToken());
+    this.saveStatus = new BehaviorSubject('done');
+  }
+
+  setSavingDone() {
+    this.saveStatus.next('done');
+  }
+
+  setIsSaving() {
+    this.saveStatus.next('saving');
+  }
+
+  setSavingError() {
+    this.saveStatus.next('error');
   }
 
   setUser(user) {
@@ -22,14 +36,17 @@ export class RsvpService {
     const encodedToken = encodeURIComponent(this.token.getValue());
 
     return new Promise((resolve, reject) => {
+      this.setIsSaving();
       this.http.post(`/api/user/${encodedToken}`, {user: u}).subscribe(res => {
         const json = res.json();
 
         if (json.error) {
+          this.setSavingError();
           reject(json);
         }
 
         this.user.next(u);
+        this.setSavingDone();
         resolve(json);
       });
     });
@@ -39,11 +56,13 @@ export class RsvpService {
     const encodedToken = encodeURIComponent(token);
 
     return new Promise((resolve, reject) => {
+      this.setIsSaving();
       this.http.get(`/api/user/${encodedToken}`).subscribe(res => {
         const json = res.json();
 
         if (json.error) {
           alert(json.message);
+          this.setSavingError();
           this.token.next('');
           return reject(json);
         }
@@ -51,6 +70,7 @@ export class RsvpService {
         window.localStorage.setItem('token', token);
         this.token.next(token);
         this.user.next(this.assignGuestIds(json.user));
+        this.setSavingDone();
         return resolve(json);
       });
     });

@@ -1,6 +1,6 @@
 <div class="rsvp">
   
-    <div *ngIf="!loggedIn">
+    <div class="rsvp__wrapper" *ngIf="!loggedIn">
         <p>
             Please enter the token included with your wedding invite.
             If you do not have a token, please text/call/email Justin or Laura.
@@ -16,6 +16,8 @@
 
     <div class="rsvp__wrapper" *ngIf="loggedIn">
         <button class="button button--small mt-10" (click)="onClickLogout()">Logout</button>
+        <i class="fa ml-5" [ngClass]="{'fa-check-circle text-success': (saveStatus === 'done'), 'fa-circle-o-notch fa-spin': (saveStatus === 'saving'), 'fa-times-circle text-error': (saveStatus === 'error')}" aria-hidden="true"></i>
+        <span style="font-size:12px;" *ngIf="saveStatus === 'error'">{{ saveError }}</span>
         <h3 class="mb-10">Welcome, {{ user.name }}</h3>
         <div class="rsvp__my-info">
             <div class="form-group" >
@@ -34,9 +36,9 @@
             <button *ngIf="user.guests.length < user.maxGuests" class="button rsvp__add-guest-button" (click)="addGuest()">
                 Add Guest +
             </button>
-            <button class="button success">
+            <!--<button class="button success">
                 Submit RSVP
-            </button>
+            </button>-->
         </div>
     </div>
 
