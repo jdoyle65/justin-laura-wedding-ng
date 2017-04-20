@@ -15,8 +15,8 @@ export class RsvpService {
     private http: Http
   ) {
     this.user = new BehaviorSubject(undefined);
-    this.token = new BehaviorSubject(this.checkForSavedToken());
     this.saveStatus = new BehaviorSubject('done');
+    this.token = new BehaviorSubject(this.checkForSavedToken());
   }
 
   setSavingDone() {
