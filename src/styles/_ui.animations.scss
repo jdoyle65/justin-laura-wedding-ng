@@ -25,3 +25,8 @@
     0% {opacity: 0; transform: translateX(1em)}
     100% {opacity: 1; transform: translateX(0)}
 }
+
+.animate-delay-250 { animation-delay: 250ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+.animate-delay-750 { animation-delay: 750ms; }
+.animate-delay-1 { animation-delay: 1s; }

@@ -1,12 +1,24 @@
 .wedding-details {
-    min-height: 100vh;
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
     overflow: auto;
     @include lightOnDark;
+    background: url(/assets/img/front-steps-sm.jpg) no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;   
 
     &__content {
-        padding: 0 1.5em;
-        position:relative;
-        z-index:2;
+        position: absolute;
+        padding: 1em 1.5em;
+        min-height: 100%;
+        width: 100%;
+        background-color: $purple-transparent;
+        box-sizing: border-box;
+    }
+
+    &__accommodations {
+        max-width: 600px;
     }
 
     &__table {
