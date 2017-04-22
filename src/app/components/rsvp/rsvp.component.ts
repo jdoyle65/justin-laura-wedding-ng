@@ -12,6 +12,7 @@ import { RsvpService } from '../../services/rsvp.service';
 export class RsvpComponent implements OnInit, OnDestroy {
 
   public mealEdit;
+  public songRequest;
   public loggedIn = false;
   public errorMessage = '';
   public saveStatus = 'done';

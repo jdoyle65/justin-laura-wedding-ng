@@ -44,6 +44,24 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="form-label">Song Request:</div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Please play..." [(ngModel)]="songRequest">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label">Where are you staying?</div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Where you at..." [(ngModel)]="accommodations">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label">Display your accommodations to other guests?</div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Where you at..." [(ngModel)]="displayAccommodations">
+                    </div>
+                </div>
             </div>
             <div *ngFor="let guest of user.guests">
                 <jl-guest [user]="user" [guest]="guest"></jl-guest>

@@ -7,25 +7,35 @@ const USERS = {
     "justindoyle": {
         name: 'Justin Doyle',
         isAttending: true,
+        songRequest: '',
+        attendingPaddys: false,
+        accommodations: '',
+        shareAccommodations: false,
         maxGuests: 2,
         guests: [],
         selectedMeal: null,
         dietaryRestrictions: '',
         mealOptions: [
             {id: 0, name: 'Chicken w/ Vegetables'},
-            {id: 1, name: 'Salmon w/ Vegetables'}
+            {id: 1, name: 'Salmon w/ Vegetables'},
+            {id: 2, name: 'Vegetarian'}
         ]
     },
     "bobdoyle": {
         name: 'Bob Doyle',
         isAttending: true,
+        songRequest: '',
+        attendingPaddys: false,
+        accommodations: '',
+        shareAccommodations: false,
         maxGuests: 5,
         guests: [],
         selectedMeal: null,
         dietaryRestrictions: '',
         mealOptions: [
             {id: 0, name: 'Chicken w/ Vegetables'},
-            {id: 1, name: 'Salmon w/ Vegetables'}
+            {id: 1, name: 'Salmon w/ Vegetables'},
+            {id: 2, name: 'Vegetarian'}
         ]
     }
 };
