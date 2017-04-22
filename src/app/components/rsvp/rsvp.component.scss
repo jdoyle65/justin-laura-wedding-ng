@@ -24,6 +24,13 @@
         width: 100%;
         margin-left: 1em;
     }
+
+    &__login-error {
+        margin-top: 1em;
+        padding: 1em;
+        background-color: $white;
+        color: $error;
+    }
 }
 
 @import './guest/guest.component';

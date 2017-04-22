@@ -2,8 +2,8 @@
   
     <div class="rsvp__wrapper" *ngIf="!loggedIn">
         <p>
-            Please enter the token included with your wedding invite.
-            If you do not have a token, please text/call/email Justin or Laura.
+            Please enter your first and last name.
+            If you are having issues, please text/call/email Justin or Laura.
         </p>
         <p>
             Justin - (226) 236-0847 <span class="text-lt-purple">|</span> justin@justindoyle.ca
@@ -12,6 +12,9 @@
         </p>
         <input type="text" [(ngModel)]="token">
         <button class="button" (click)="onClickLogin()">Enter</button>
+        <div *ngIf="errorMessage !== ''" class="rsvp__login-error">
+            {{ errorMessage }}
+        </div>
     </div>
 
     <div class="rsvp__wrapper" *ngIf="loggedIn">

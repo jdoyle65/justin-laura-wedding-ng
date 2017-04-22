@@ -53,7 +53,9 @@ export class RsvpService {
   }
 
   setToken(token): Promise<any> {
-    const encodedToken = encodeURIComponent(token);
+    const formattedToken = this.formatTokenInput(token);
+
+    const encodedToken = encodeURIComponent(formattedToken);
 
     return new Promise((resolve, reject) => {
       this.setIsSaving();
@@ -61,14 +63,13 @@ export class RsvpService {
         const json = res.json();
 
         if (json.error) {
-          alert(json.message);
           this.setSavingError();
           this.token.next('');
           return reject(json);
         }
 
-        window.localStorage.setItem('token', token);
-        this.token.next(token);
+        window.localStorage.setItem('token', formattedToken);
+        this.token.next(formattedToken);
         this.user.next(this.assignGuestIds(json.user));
         this.setSavingDone();
         return resolve(json);
@@ -79,6 +80,10 @@ export class RsvpService {
   clearToken() {
     window.localStorage.setItem('token', '');
     this.token.next('');
+  }
+
+  private formatTokenInput(token: string): string {
+    return token.replace(/[^a-zA-Z]/g, '').toLowerCase();
   }
 
   private checkForSavedToken(): string {

@@ -4,7 +4,7 @@ var bodyParser  = require('body-parser');
 app.use(bodyParser.json());
 
 const USERS = {
-    "justin": {
+    "justindoyle": {
         name: 'Justin Doyle',
         maxGuests: 2,
         guests: [],
@@ -15,7 +15,7 @@ const USERS = {
             {id: 1, name: 'Salmon w/ Vegetables'}
         ]
     },
-    "bob": {
+    "bobdoyle": {
         name: 'Bob Doyle',
         maxGuests: 5,
         guests: [],

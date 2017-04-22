@@ -13,6 +13,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
   public mealEdit;
   public loggedIn = false;
+  public errorMessage = '';
   public saveStatus = 'done';
   public saveError = 'Error saving data.';
 
@@ -45,7 +46,17 @@ export class RsvpComponent implements OnInit, OnDestroy {
   }
 
   onClickLogin() {
-    this.rsvpService.setToken(this.token);
+    this.errorMessage = '';
+    const token = this.token.concat(''); // Clone the string
+
+    this.rsvpService.setToken(token)
+      .catch(json => {
+        if (json.error == 1) {
+          this.errorMessage = `Invalid name: ${token}`;
+        } else {
+          this.errorMessage = json.message;
+        }
+      });
   }
 
   onClickLogout() {
