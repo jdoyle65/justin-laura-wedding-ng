@@ -2,7 +2,8 @@
   
     <div class="rsvp__wrapper" *ngIf="!loggedIn">
         <p>
-            Please enter your first and last name.
+            Please enter your first and last name. If your first and last name is invalid, try 
+            using the first and last name of your spouse, as your RSVP profile may be setup under their name.
             If you are having issues, please text/call/email Justin or Laura.
         </p>
         <p>
@@ -22,27 +23,55 @@
         <i class="fa ml-5" [ngClass]="{'fa-check-circle text-success': (saveStatus === 'done'), 'fa-circle-o-notch fa-spin': (saveStatus === 'saving'), 'fa-times-circle text-error': (saveStatus === 'error')}" aria-hidden="true"></i>
         <span style="font-size:12px;" *ngIf="saveStatus === 'error'">{{ saveError }}</span>
         <h3 class="mb-10">Welcome, {{ user.name }}</h3>
-        <div class="rsvp__my-info">
-            <div class="form-group" >
-                <div class="form-label">My Meal:</div>
-                <div class="form-input">
-                    <select [(ngModel)]="mealEdit" (ngModelChange)="onChangeMeal()">
-                        <option *ngFor="let meal of mealOptions" [value]="meal.id">{{ meal.name }}</option>
-                    </select>
+
+        <div *ngIf="!user.isAttending">
+            <p>
+                You have RSVP'd as "Not Attending". If you need to change your RSVP, please text/call/email Justin or Laura.
+            </p>
+            <p>
+                Justin - (226) 236-0847 <span class="text-lt-purple">|</span> justin@justindoyle.ca
+                <br>
+                Laura - (902) 799-9726 <span class="text-lt-purple">|</span> fleurguson@gmail.com
+            </p>
+        </div>
+        <div *ngIf="user.isAttending">
+            <div class="rsvp__my-info">
+                <div class="form-group">
+                    <div class="form-label">My Meal:</div>
+                    <div class="form-input">
+                        <select [(ngModel)]="mealEdit" (ngModelChange)="onChangeMeal()">
+                            <option *ngFor="let meal of mealOptions" [value]="meal.id">{{ meal.name }}</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div *ngFor="let guest of user.guests">
-            <jl-guest [user]="user" [guest]="guest"></jl-guest>
-        </div>
-        <div style="text-align:right">
-            <button *ngIf="user.guests.length < user.maxGuests" class="button rsvp__add-guest-button" (click)="addGuest()">
-                Add Guest +
-            </button>
-            <!--<button class="button success">
-                Submit RSVP
-            </button>-->
+            <div *ngFor="let guest of user.guests">
+                <jl-guest [user]="user" [guest]="guest"></jl-guest>
+            </div>
+            <div class="mb-10" style="text-align:right">
+                <button *ngIf="user.guests.length < user.maxGuests" class="button rsvp__add-guest-button" (click)="addGuest()">
+                    Add Guest +
+                </button>
+            </div>
+            <div style="text-align: right;">
+                <button class="button error" (click)="openNotAttendingModal()">
+                    I Will Not Be Attending
+                </button>
+            </div>
         </div>
     </div>
-
+    <div *ngIf="modalOpen" class="rsvp__modal-backdrop" (click)="closeNotAttendingModal()">
+        <div class="rsvp__modal animate-fade-in" (click)="$event.stopPropagation()">
+            <p>
+                By clicking "Not Attending" you will confirm that you are unable to attend Laura and Justin's Wedding.
+            </p>
+            <p>
+                Are you sure?
+            </p>
+            <div style="text-align: right;">
+                <button class="button error" (click)="confirmNotAttending()">Not Attending</button>
+                <button class="button" (click)="closeNotAttendingModal()">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

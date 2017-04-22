@@ -31,6 +31,28 @@
         background-color: $white;
         color: $error;
     }
+
+    &__modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+    }
+
+    &__modal {
+        max-width: 500px;
+        position: relative;
+        left: 50%;
+        top: 20px;
+        transform: translateX(-50%);
+        border-radius: 5px;
+        padding: 2em;
+        @include darkOnLight();
+        z-index: 1001;
+    }
 }
 
 @import './guest/guest.component';

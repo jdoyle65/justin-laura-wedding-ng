@@ -6,6 +6,7 @@ app.use(bodyParser.json());
 const USERS = {
     "justindoyle": {
         name: 'Justin Doyle',
+        isAttending: true,
         maxGuests: 2,
         guests: [],
         selectedMeal: null,
@@ -17,6 +18,7 @@ const USERS = {
     },
     "bobdoyle": {
         name: 'Bob Doyle',
+        isAttending: true,
         maxGuests: 5,
         guests: [],
         selectedMeal: null,
