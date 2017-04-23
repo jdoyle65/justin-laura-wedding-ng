@@ -80,10 +80,25 @@
                     Add Guest +
                 </button>
             </div>
+            <div class="mb-10" style="text-align:right">
+                <button class="button success rsvp__add-guest-button" (click)="onClickSaveRsvp()">
+                    Save RSVP
+                </button>
+            </div>
             <div style="text-align: right;">
                 <button class="button error" (click)="openNotAttendingModal()">
                     I Will Not Be Attending
                 </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="savedModalOpen" class="rsvp__modal-backdrop" (click)="closeSavedModal()">
+        <div class="rsvp__modal animate-fade-in" (click)="$event.stopPropagation()">
+            <p>
+                Your RSVP has been saved!
+            </p>
+            <div style="text-align: right;">
+                <button class="button" (click)="closeSavedModal()">Close</button>
             </div>
         </div>
     </div>

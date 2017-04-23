@@ -35,6 +35,7 @@ app.get('/api/user/:token', function (req, res) {
     const token = req.params.token;
 
     db.collection('rsvps').findOne({ rsvpKey: token }, (err, data) => {
+        console.log(token);
         if (err || data === null) {
             console.log(err);
             res.json({error: 1, message: `Invalid Token: ${token}`})   

@@ -22,6 +22,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
   public saveStatus = 'done';
   public saveError = 'Error saving data.';
   public modalOpen = false;
+  public savedModalOpen = false;
 
   private token: string;
   private user;
@@ -101,6 +102,20 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.closeNotAttendingModal();
     this.user.isAttending = false;
     this.saveUser(this.user);
+  }
+
+  onClickSaveRsvp() {
+    this.user.savedRsvp = true;
+    this.saveUser(this.user);
+    this.openSavedModal();
+  }
+
+  openSavedModal() {
+    this.savedModalOpen = true;
+  }
+
+  closeSavedModal() {
+    this.savedModalOpen = false;
   }
 
   private registerTypingTimeout() {
