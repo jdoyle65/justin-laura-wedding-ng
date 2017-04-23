@@ -1,7 +1,14 @@
 var express = require('express')
 var app = express();
 var bodyParser  = require('body-parser');
+var options = require('node-options');
 app.use(bodyParser.json());
+
+var opts = {
+    'port': process.env.PORT || 3000
+}
+var result = options.parse(process.argv.slice(2), opts);
+var port = opts.port;
 
 const USERS = require('./sample-rsvps.json');
 
@@ -29,6 +36,6 @@ app.post('/api/user/:token', function (req, res) {
 app.use(express.static('public'));
 app.use('**', express.static('public'));
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`)
 })
