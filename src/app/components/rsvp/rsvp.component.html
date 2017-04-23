@@ -45,6 +45,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="form-label">Dietary Restrictions:</div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Restrictions..." [(ngModel)]="dietaryRestrictions" (keyup)="onChangeTextField('dietaryRestrictions', 'dietaryRestrictions')">
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="form-label">Song Request:</div>
                     <div class="form-input">
                         <input type="text" placeholder="Please play..." [(ngModel)]="songRequest" (keyup)="onChangeTextField('songRequest', 'songRequest')">
@@ -59,7 +65,7 @@
                 <div class="form-group">
                     <div class="form-label">Going to Paddy's Night? <a class="text-yellow" [routerLink]="'/wedding-details'" fragment="paddys-night">Info</a></div>
                     <div class="form-input">
-                        <select [(ngModel)]="attendingPaddys">
+                        <select [(ngModel)]="attendingPaddys" (ngModelChange)="onChangeAttendingPaddys()">
                             <option [value]="true">Yes</option>
                             <option [value]="false">No</option>
                         </select>

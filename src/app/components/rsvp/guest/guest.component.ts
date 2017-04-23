@@ -14,6 +14,7 @@ export class GuestComponent implements OnInit {
 
   private guestNameEdit: string;
   private guestMealEdit: number|null;
+  private guestDietaryRestrictions: string;
   private mealOptions;
 
   constructor(
@@ -23,6 +24,7 @@ export class GuestComponent implements OnInit {
   ngOnInit() {
     this.guestNameEdit = this.guest.name;
     this.guestMealEdit = this.guest.selectedMeal;
+    this.guestDietaryRestrictions = this.guest.dietaryRestrictions;
     this.mealOptions = this.user.mealOptions;
   }
 
@@ -35,6 +37,7 @@ export class GuestComponent implements OnInit {
     this.editing = false;
     this.guest.name = this.guestNameEdit;
     this.guest.selectedMeal = this.guestMealEdit;
+    this.guest.dietaryRestrictions = this.guestDietaryRestrictions;
     this.rsvpService.setUser(this.user);
   }
 

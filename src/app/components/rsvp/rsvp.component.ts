@@ -15,6 +15,8 @@ export class RsvpComponent implements OnInit, OnDestroy {
   public mealEdit;
   public songRequest;
   public accommodations;
+  public attendingPaddys;
+  public dietaryRestrictions;
   public loggedIn = false;
   public errorMessage = '';
   public saveStatus = 'done';
@@ -76,6 +78,11 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.saveUser(this.user);
   }
 
+  onChangeAttendingPaddys() {
+    this.user.attendingPaddys = this.attendingPaddys;
+    this.saveUser(this.user);
+  }
+
   onChangeTextField(model, userProp) {
     this.user[userProp] = this[model];
     this.registerTypingTimeout();
@@ -121,9 +128,11 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
     this.user = user;
     this.mealEdit = user.selectedMeal;
+    this.dietaryRestrictions = user.dietaryRestrictions;
     this.mealOptions = user.mealOptions;
     this.songRequest = user.songRequest;
     this.accommodations = user.accommodations;
+    this.attendingPaddys = user.attendingPaddys;
   }
 
   private addGuest(): void {

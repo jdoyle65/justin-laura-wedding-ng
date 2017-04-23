@@ -1,44 +1,31 @@
 var express = require('express')
 var app = express();
 var bodyParser  = require('body-parser');
+var AWS = require('aws-sdk')
 app.use(bodyParser.json());
 
-const USERS = {
-    "justindoyle": {
-        name: 'Justin Doyle',
-        isAttending: true,
-        songRequest: '',
-        attendingPaddys: false,
-        accommodations: '',
-        shareAccommodations: false,
-        maxGuests: 2,
-        guests: [],
-        selectedMeal: null,
-        dietaryRestrictions: '',
-        mealOptions: [
-            {id: 0, name: 'Chicken w/ Vegetables'},
-            {id: 1, name: 'Salmon w/ Vegetables'},
-            {id: 2, name: 'Vegetarian'}
-        ]
-    },
-    "bobdoyle": {
-        name: 'Bob Doyle',
-        isAttending: true,
-        songRequest: '',
-        attendingPaddys: false,
-        accommodations: '',
-        shareAccommodations: false,
-        maxGuests: 5,
-        guests: [],
-        selectedMeal: null,
-        dietaryRestrictions: '',
-        mealOptions: [
-            {id: 0, name: 'Chicken w/ Vegetables'},
-            {id: 1, name: 'Salmon w/ Vegetables'},
-            {id: 2, name: 'Vegetarian'}
-        ]
-    }
+AWS.config.loadFromPath('./config.json');
+var db = new AWS.DynamoDB.DocumentClient();
+
+function findRsvp(rsvpKey) {
+    var params = {
+    TableName : "wedding-rsvps",
+    KeyConditionExpression: 'rsvpKey = :key',
+    ExpressionAttributeValues: { ':key': rsvpKey }
 };
+    db.query(params, (err, data) => {
+        if (err) {
+            console.log('Error');
+            console.log(err);
+        } else {
+            console.log('Query Succeeded');
+            console.log(data);
+        }
+    })
+}
+findRsvp('justindoyle');
+
+const USERS = require('./sample-rsvps.json');
 
 app.get('/api/user/:token', function (req, res) {
     const token = req.params.token;

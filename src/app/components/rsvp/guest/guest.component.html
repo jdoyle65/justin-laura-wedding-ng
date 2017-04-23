@@ -5,6 +5,8 @@
       <span class="guest__name">{{ guest?.name ? guest.name : 'New Guest' }}</span>
       <br>
       <span class="guest__meal">{{ guest?.selectedMeal !== null ? mealOptions[guest?.selectedMeal].name : 'No meal selected' }}</span>
+      <br>
+      <span class="guest__dietary-restrictions">{{ guest?.dietaryRestrictions ? guest.dietaryRestrictions : '' }}</span>
     </div>
     <div class="guest__buttons">
       <button class="guest__edit-btn button button--small" (click)="onClickEdit()">
@@ -30,6 +32,12 @@
           <select [(ngModel)]="guestMealEdit">
             <option *ngFor="let meal of mealOptions" [value]="meal.id">{{ meal.name }}</option>
           </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-label">Dietary Restrictions:</div>
+        <div class="form-input">
+          <input type="text" placeholder="Restrictions..." [(ngModel)]="guestDietaryRestrictions">
         </div>
       </div>
     </div>
