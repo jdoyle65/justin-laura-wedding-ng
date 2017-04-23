@@ -106,7 +106,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.clearTypingTimeout();
     this.typingTimeout = setTimeout(() => {
       this.saveUser(this.user);
-    }, 1000);
+    }, 500);
   }
 
   private clearTypingTimeout() {
