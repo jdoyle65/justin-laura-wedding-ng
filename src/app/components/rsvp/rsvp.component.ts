@@ -36,6 +36,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.mealOptions = this.rsvpService.mealOptions;
     this.rsvpService.saveStatus.subscribe(status => this.saveStatus = status);
     this.tokenSub = this.rsvpService.token.subscribe(token => {
       this.token = token;
@@ -129,7 +130,6 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.user = user;
     this.mealEdit = user.selectedMeal;
     this.dietaryRestrictions = user.dietaryRestrictions;
-    this.mealOptions = user.mealOptions;
     this.songRequest = user.songRequest;
     this.accommodations = user.accommodations;
     this.attendingPaddys = user.attendingPaddys;

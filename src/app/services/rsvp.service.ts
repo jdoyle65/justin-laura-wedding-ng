@@ -10,6 +10,11 @@ export class RsvpService {
   public user: BehaviorSubject<any>;
   public token: BehaviorSubject<string>;
   public saveStatus: BehaviorSubject<string>;
+  public mealOptions = [
+    { id: 0, name: 'Chicken'},
+    { id: 1, name: 'Salmon'},
+    { id: 2, name: 'Vegetarian'}
+  ];
 
   constructor(
     private http: Http

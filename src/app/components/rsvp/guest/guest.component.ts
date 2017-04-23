@@ -25,7 +25,7 @@ export class GuestComponent implements OnInit {
     this.guestNameEdit = this.guest.name;
     this.guestMealEdit = this.guest.selectedMeal;
     this.guestDietaryRestrictions = this.guest.dietaryRestrictions;
-    this.mealOptions = this.user.mealOptions;
+    this.mealOptions = this.rsvpService.mealOptions;
   }
 
   onClickEdit() {
