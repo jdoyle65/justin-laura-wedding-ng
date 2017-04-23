@@ -3,7 +3,7 @@
     <div class="rsvp__wrapper" *ngIf="!loggedIn">
         <p>
             Please enter your first and last name. If your first and last name is invalid, try 
-            using the first and last name of your spouse, as your RSVP profile may be setup under their name.
+            using the first and last name of your partner, as your RSVP profile may be setup under their name.
             If you are having issues, please text/call/email Justin or Laura.
         </p>
         <p>
@@ -47,19 +47,22 @@
                 <div class="form-group">
                     <div class="form-label">Song Request:</div>
                     <div class="form-input">
-                        <input type="text" placeholder="Please play..." [(ngModel)]="songRequest">
+                        <input type="text" placeholder="Please play..." [(ngModel)]="songRequest" (keyup)="onChangeTextField('songRequest', 'songRequest')">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label">Where are you staying?</div>
                     <div class="form-input">
-                        <input type="text" placeholder="Where you at..." [(ngModel)]="accommodations">
+                        <input type="text" placeholder="Where you at..." [(ngModel)]="accommodations" (keyup)="onChangeTextField('accommodations', 'accommodations')">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="form-label">Display your accommodations to other guests?</div>
+                    <div class="form-label">Going to Paddy's Night? <a class="text-yellow" [routerLink]="'/wedding-details'" fragment="paddys-night">Info</a></div>
                     <div class="form-input">
-                        <input type="text" placeholder="Where you at..." [(ngModel)]="displayAccommodations">
+                        <select [(ngModel)]="attendingPaddys">
+                            <option [value]="true">Yes</option>
+                            <option [value]="false">No</option>
+                        </select>
                     </div>
                 </div>
             </div>

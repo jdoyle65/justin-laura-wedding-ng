@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { routeAnimation } from '../../utility/animations';
 import { RsvpService } from '../../services/rsvp.service';
+import { CharacterService } from '../../services/character.service';
 
 @Component({
   selector: 'jl-rsvp',
@@ -13,6 +14,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
   public mealEdit;
   public songRequest;
+  public accommodations;
   public loggedIn = false;
   public errorMessage = '';
   public saveStatus = 'done';
@@ -24,9 +26,11 @@ export class RsvpComponent implements OnInit, OnDestroy {
   private userSub;
   private tokenSub;
   private mealOptions = [];
+  private typingTimeout = null;
 
   constructor(
-    private rsvpService: RsvpService
+    private rsvpService: RsvpService,
+    private characterService: CharacterService
   ) { }
 
   ngOnInit() {
@@ -49,7 +53,9 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
   onClickLogin() {
     this.errorMessage = '';
-    const token = this.token.concat(''); // Clone the string
+    let token = this.token.concat(''); // Clone the string
+    token = this.characterService.removeDiacritics(token);
+    console.log(token);
 
     this.rsvpService.setToken(token)
       .catch(json => {
@@ -70,6 +76,11 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.saveUser(this.user);
   }
 
+  onChangeTextField(model, userProp) {
+    this.user[userProp] = this[model];
+    this.registerTypingTimeout();
+  }
+
   openNotAttendingModal() {
     this.modalOpen = true;
   }
@@ -84,7 +95,22 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.saveUser(this.user);
   }
 
+  private registerTypingTimeout() {
+    this.clearTypingTimeout();
+    this.typingTimeout = setTimeout(() => {
+      this.saveUser(this.user);
+    }, 1000);
+  }
+
+  private clearTypingTimeout() {
+    if (this.typingTimeout !== null) {
+      clearTimeout(this.typingTimeout);
+      this.typingTimeout = null;
+    }
+  }
+
   private saveUser(user): void {
+    console.log('User saving...');
     this.rsvpService.setUser(user);
   }
 
@@ -96,6 +122,8 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.user = user;
     this.mealEdit = user.selectedMeal;
     this.mealOptions = user.mealOptions;
+    this.songRequest = user.songRequest;
+    this.accommodations = user.accommodations;
   }
 
   private addGuest(): void {

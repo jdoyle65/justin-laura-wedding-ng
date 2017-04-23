@@ -3,6 +3,7 @@
     z-index: 1;
     min-height: 100%;
     width: 100%;
+    padding-bottom: 2em;
     @include lightOnDark;
 
     &__wrapper {

@@ -12,6 +12,7 @@ import { WeddingDetailsComponent } from './components/wedding-details/wedding-de
 import { DelayGuard } from './guards/delay.guard';
 import { MenuService } from './services/menu.service';
 import { RsvpService } from './services/rsvp.service';
+import { CharacterService } from './services/character.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
 import { GuestComponent } from './components/rsvp/guest/guest.component';
@@ -35,7 +36,8 @@ import { GuestComponent } from './components/rsvp/guest/guest.component';
   providers: [
     DelayGuard,
     MenuService,
-    RsvpService
+    RsvpService,
+    CharacterService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { routeAnimation } from '../../utility/animations';
 
 @Component({
@@ -10,9 +11,15 @@ import { routeAnimation } from '../../utility/animations';
 })
 export class WeddingDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.route.fragment.subscribe(f => {
+      const element = document.querySelector("#" + f);
+      if (element) element.scrollIntoView(element)
+    });
   }
 
 }

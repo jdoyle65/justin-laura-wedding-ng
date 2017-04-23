@@ -62,6 +62,8 @@ input[type="text"] {
 }
 
 select {
+    box-sizing: border-box;
+    height: 2.5em;
     padding: 0.75em;
     border: none;
     border-radius: 4px;
@@ -76,20 +78,22 @@ label {
 }
 
 .form-group {
+    display: table;
     width: 100%;
-    margin: 0.5em 0;
+    padding-bottom: 1.5em;
 
     .form-label {
-        float: left;
-        display: inline-block;
+        vertical-align: top;        
+        display: table-cell;
         box-sizing: border-box;
-        width: 25%;
+        width: 35%;
     }
 
     .form-input {
-        display: inline-block;
+        vertical-align: top;        
+        display: table-cell;
         box-sizing: border-box;
-        width: 75%;
+        width: 55%;
 
         input,
         textarea,
