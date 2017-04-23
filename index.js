@@ -10,7 +10,12 @@ var opts = {
 var result = options.parse(process.argv.slice(2), opts);
 var port = opts.port;
 
-const USERS = require('./sample-rsvps.json');
+const SAMPLE_USERS = require('./sample-rsvps.json').rsvps;
+console.log(SAMPLE_USERS);
+let USERS = {};
+SAMPLE_USERS.forEach(u => {
+    USERS[u.rsvpKey] = u;
+})
 
 app.get('/api/user/:token', function (req, res) {
     const token = req.params.token;
