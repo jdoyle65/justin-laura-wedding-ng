@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var config = require('./config.json');
 
-var seed = require('./seed-rsvps.json');
+// var seed = require('./seed-rsvps.json');
 
 const pass = encodeURIComponent(config.mongo_password);
 const user = encodeURIComponent(config.mongo_user);
@@ -12,7 +12,9 @@ const mongoDb = encodeURIComponent(config.mongo_database)
 const connString = `mongodb://${user}:${pass}@${host}:${mongoPort}/${mongoDb}`;
 MongoClient.connect(connString, function (err, db) {
   if (err) throw err;
-    var rsvps = seed.rsvps;
+    var rsvps = [
+        {"name" : "Scott Ferguson", "maxGuests": 1, "guests": ["Gail"]}
+    ];
 
     const mapRsvp = (rsvp) => {
         const guests = rsvp.guests.map(g => {
