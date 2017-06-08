@@ -6,6 +6,7 @@ import { DelayGuard } from './guards/delay.guard';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { WeddingDetailsComponent } from './components/wedding-details/wedding-details.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
+import { GiftsComponent } from './components/gifts/gifts.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'rsvp',
         component: RsvpComponent
+      },
+      {
+        path: 'registry',
+        component: GiftsComponent
       },
       {
         path: '**',

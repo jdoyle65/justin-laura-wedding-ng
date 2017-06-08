@@ -12,9 +12,10 @@ export class MenuComponent implements OnInit, OnDestroy {
   public visible: boolean = true;
   public open: boolean;
   public routes = [
-    { label: 'Home', link: '/home' },
-    { label: 'Details', link: '/wedding-details' },
-    { label: 'RSVP', link: '/rsvp' }
+    { label: 'Home', link: '/home', new: false },
+    { label: 'Details', link: '/wedding-details', new: false },
+    { label: 'RSVP', link: '/rsvp', new: false },
+    { label: 'Registry', link: '/registry', new: true }
   ];
 
   private menuStateSub;

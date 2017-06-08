@@ -8,6 +8,8 @@
         margin: 0.5em;
     }
 
+    
+
     &__button {
         cursor: pointer;
         border-radius: 5px;
@@ -59,15 +61,31 @@
 
         &.active {
             @include lightOnDark;
+            & .menu__badge {
+                @include darkOnLight;
+            }
         }
 
         &:hover {
             @include lightOnDark;
+            .menu__badge {
+                @include darkOnLight;
+            }
         }
 
         a {
             text-decoration: none;
             color: inherit;
         }
+    }
+
+    &__badge {
+        @include lightOnDark;
+        border-radius: 5px;
+        font-size: 0.6em;
+        vertical-align: middle;
+        padding: 0.5em;
+        text-transform: uppercase;
+        margin-left: 1em;
     }
 }

@@ -16,6 +16,7 @@ import { CharacterService } from './services/character.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
 import { GuestComponent } from './components/rsvp/guest/guest.component';
+import { GiftsComponent } from './components/gifts/gifts.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GuestComponent } from './components/rsvp/guest/guest.component';
     WeddingDetailsComponent,
     MenuComponent,
     RsvpComponent,
-    GuestComponent
+    GuestComponent,
+    GiftsComponent
   ],
   imports: [
     BrowserModule,

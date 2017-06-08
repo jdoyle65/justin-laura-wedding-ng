@@ -1,0 +1,63 @@
+.gifts {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    overflow: auto;
+    @include lightOnDark;
+    background: url(/assets/img/front-steps-sm.jpg) no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;   
+
+    &__content {
+        position: absolute;
+        padding: 1em 1.5em;
+        min-height: 100%;
+        width: 100%;
+        background-color: $purple-transparent;
+        box-sizing: border-box;
+    }
+
+    &__details {
+        max-width: 600px;
+    }
+
+    &__accommodations {
+        max-width: 600px;
+    }
+    &__paddys-night {
+        max-width: 600px;
+    }
+
+    &__table {
+        @media(max-width: 768px) {
+            margin-left: 18px;
+            margin-right: 18px;
+        }
+
+        margin-bottom: 20px;
+
+        &-tr {
+            vertical-align: top;
+        }
+
+        &-header {
+            text-align: right;
+            color: $yellow;
+            padding-bottom: 10px;
+        }
+
+        &-td {
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__after-image-filler {
+        height: 100%;
+        color: $purple-dark;
+    }
+}

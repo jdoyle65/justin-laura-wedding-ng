@@ -14,7 +14,7 @@
   <div>
     <ul class="menu__route-list">
       <li *ngFor="let route of routes" class="menu__route" [routerLink]="route.link" routerLinkActive="active" (click)="onClickRoute()">
-        <a>{{ route.label }}</a>
+        <a>{{ route.label }} <span *ngIf="route.new" class="menu__badge">New</span></a>
       </li>
     </ul>
   </div>
