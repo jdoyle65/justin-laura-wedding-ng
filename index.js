@@ -19,8 +19,8 @@ const mongoDb = encodeURIComponent(config.mongo_database)
 
 const connString = `mongodb://${user}:${pass}@${host}:${mongoPort}/${mongoDb}`;
 MongoClient.connect(connString, function (err, database) {
-  if (err) throw err
-  db = database;
+    if (err) throw err
+    db = database;
 })
 
 app.use(bodyParser.json());
@@ -31,9 +31,9 @@ SAMPLE_USERS.forEach(u => {
     USERS[u.rsvpKey] = u;
 })
 
-app.get('/api/user/:token', function (req, res) {
+app.get('/api/user/:token', (req, res) => {
     const token = req.params.token;
-
+    
     db.collection('rsvps').findOne({ rsvpKey: token }, (err, data) => {
         console.log(token);
         if (err || data === null) {
@@ -46,13 +46,13 @@ app.get('/api/user/:token', function (req, res) {
     });
 });
 
-app.post('/api/user/:token', function (req, res) {
+app.post('/api/user/:token', (req, res) => {
     const token = req.params.token;
-
+    
     db.collection('rsvps').findOneAndUpdate(
-        { rsvpKey: token },
-        { $set: req.body.user },
-        (err, data) => {
+    { rsvpKey: token },
+    { $set: req.body.user },
+    (err, data) => {
         if (err || data === null) {
             console.log(err);
             res.json({error: 1, message: `Invalid Token: ${token}`})   
@@ -62,9 +62,41 @@ app.post('/api/user/:token', function (req, res) {
     });
 });
 
-app.use(express.static('public'));
-app.use('**', express.static('public'));
+app.get('/api/admin', (req, res) => {
+    const password = req.query.p;
+    console.log(`Password: ${password}`);
+    if (password !== 'supersecretpassword') {
+        return res.json(401, {
+            error: 1,
+            message: 'Invalid password' 
+        });
+    }
+    
+    db.collection('rsvps').find().toArray((err, rsvps) => {
+        if (err || !Array.isArray(rsvps)) {
+            console.log(err);
+            return res.json(404, {
+                error: 1,
+                message: 'Cannot retrieve RSVPs'
+            });
+        }
 
-app.listen(port, function () {
-    console.log(`Example app listening on port ${port}!`)
-})
+        rsvps = rsvps.sort((a, b) => {
+            if (a.name > b.name) return 1;
+            else if (a.name < b.name) return -1;
+            else return 0;
+        })
+        
+        res.json({error: 0, 
+            adminData: {
+                rsvps: rsvps
+            }});
+        })
+    })
+    
+    app.use(express.static('public'));
+    app.use('**', express.static('public'));
+    
+    app.listen(port, function () {
+        console.log(`Example app listening on port ${port}!`)
+    })

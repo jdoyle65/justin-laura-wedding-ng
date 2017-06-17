@@ -7,6 +7,7 @@ import { SplashScreenComponent } from './components/splash-screen/splash-screen.
 import { WeddingDetailsComponent } from './components/wedding-details/wedding-details.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
 import { GiftsComponent } from './components/gifts/gifts.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'registry',
         component: GiftsComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent
       },
       {
         path: '**',

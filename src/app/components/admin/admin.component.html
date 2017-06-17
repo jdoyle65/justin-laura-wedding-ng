@@ -1,0 +1,70 @@
+<div class="admin">
+  <expandable-list>
+    <expandable-list-item *ngIf="attending$ | async; let attendees;">
+      <span title>Attending: {{ attendingCount }}</span>
+      <span *ngFor="let rsvp of attendees" item>
+        {{ rsvp.name }} - {{ mealMap[rsvp.selectedMeal] }}
+        <ul *ngIf="rsvp.guests">
+          <li *ngFor="let guest of rsvp.guests">
+            {{ guest.name }} - {{ mealMap[guest.selectedMeal] }}
+          </li>
+        </ul>
+      </span>
+    </expandable-list-item>
+    <expandable-list-item *ngIf="notAttending$ | async; let attendees;">
+      <span title>Not Attending: {{ notAttendingCount }}</span>
+      <span *ngFor="let rsvp of attendees" item>
+        {{ rsvp.name }}
+        <ul *ngIf="rsvp.guests">
+          <li *ngFor="let guest of rsvp.guests">
+            {{ guest.name }}
+          </li>
+        </ul>
+      </span>
+    </expandable-list-item>
+    <expandable-list-item *ngIf="possible$ | async; let attendees;">
+      <span title>Possible: {{ possibleCount }}</span>
+      <span *ngFor="let rsvp of attendees" item>
+        {{ rsvp.name }}
+        <ul *ngIf="rsvp.guests">
+          <li *ngFor="let guest of rsvp.guests">
+            {{ guest.name }}
+          </li>
+        </ul>
+      </span>
+    </expandable-list-item>
+    <expandable-list-item *ngIf="noRsvp$ | async; let attendees;">
+      <span title>No Rsvp: {{ noRsvpCount }}</span>
+      <span *ngFor="let rsvp of attendees" item>
+        {{ rsvp.name }}
+        <ul *ngIf="rsvp.guests">
+          <li *ngFor="let guest of rsvp.guests">
+            {{ guest.name }}
+          </li>
+        </ul>
+      </span>
+    </expandable-list-item>
+    <expandable-list-item *ngIf="paddys$ | async; let attendees;">
+      <span title>Paddy's Night: {{ paddysCount }}</span>
+      <span *ngFor="let rsvp of attendees" item>
+        {{ rsvp.name }}
+        <ul *ngIf="rsvp.guests">
+          <li *ngFor="let guest of rsvp.guests">
+            {{ guest.name }}
+          </li>
+        </ul>
+      </span>
+    </expandable-list-item>
+  </expandable-list>
+
+  <div class="food-chart" *ngIf="food$ | async; let foodItems;">
+    <div class="food-chart__item" *ngFor="let food of foodItems">
+      {{ food.name }}: {{ food.count }}
+    </div>
+  </div>
+
+  <ul style="list-style:square;">
+    <li *ngFor="let request of songRequests">{{ request }}</li>
+  </ul>
+
+</div>

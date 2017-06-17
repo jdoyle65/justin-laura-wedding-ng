@@ -1,0 +1,38 @@
+.admin {
+    margin-top: 100px;
+
+
+    & .expandable-list .expandable-list-item .expandable-list-item-content > [item] {
+        line-height: 1em;
+    }
+
+    & .expandable-list .expandable-list-item .expandable-list-item-content > [item] {
+        padding: 6px 0 1px 0;
+        padding-left: 16px;
+    }
+
+    & ul {
+        list-style: none;
+    }
+
+    & [item] {
+        background-color: #f3f3f3;
+        
+        &:nth-child(even) {
+            background-color: #dce8ec;
+        }
+    }
+
+    .food-chart {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        &__item {
+            flex: 1;
+            text-align: center;
+        }
+    }
+}
