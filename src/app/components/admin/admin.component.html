@@ -4,11 +4,15 @@
       <span title>Attending: {{ attendingCount }}</span>
       <span *ngFor="let rsvp of attendees" item>
         {{ rsvp.name }} - {{ mealMap[rsvp.selectedMeal] }}
+        <span *ngIf="rsvp.dietaryRestrictions" class="admin__warning"> - Dietary Restrictions: {{ rsvp.dietaryRestrictions }}</span>
         <ul *ngIf="rsvp.guests">
           <li *ngFor="let guest of rsvp.guests">
             {{ guest.name }} - {{ mealMap[guest.selectedMeal] }}
+            <span *ngIf="guest.dietaryRestrictions" class="admin__warning"> - Dietary Restrictions: {{ guest.dietaryRestrictions }}</span>
           </li>
         </ul>
+        <span *ngIf="rsvp.accommodations">Accommodations: {{ rsvp.accommodations }}</span>
+        <span *ngIf="!rsvp.accommodations" class="admin__warning">No Accommodations</span>
       </span>
     </expandable-list-item>
     <expandable-list-item *ngIf="notAttending$ | async; let attendees;">

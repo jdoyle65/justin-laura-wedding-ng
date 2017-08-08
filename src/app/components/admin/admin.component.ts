@@ -172,7 +172,7 @@ export class AdminComponent implements OnInit {
         const paddys = rsvps.filter(rsvp => rsvp.attendingPaddys);
         return Observable.of(paddys);
       })
-      .do(attending => {
+      .do((attending: Array<any>) => {
         this.paddysCount = attending.reduce((total, rsvp) => {
           return (total + 1 + rsvp.guests.length);
         }, 0);
